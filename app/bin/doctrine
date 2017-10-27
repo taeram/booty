@@ -1,0 +1,27 @@
+#!/usr/bin/php
+<?php
+
+// Initialize Obdurate
+require_once __DIR__ . '/../bootstrap.php';
+
+// Make sure we're in the same directory as our migrations.yml file
+$migrationsPath = __DIR__ . '/../config';
+if (!file_exists($migrationsPath)) {
+    die ("Cannot find migrations path at: $migrationsPath\n");
+}
+chdir($migrationsPath);
+
+// Initialize the Console Runner
+$commands = array(
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\GenerateCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand()
+);
+
+$helperSet = \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet(\Taeram\Entity::getEntityManager());
+$helperSet->set(new \Symfony\Component\Console\Helper\DialogHelper(), 'dialog');
+
+\Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet, $commands);

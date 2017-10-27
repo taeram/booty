@@ -1,0 +1,16 @@
+{
+  "autoload": {
+    "psr-4": {"Taeram\\": "library\\Taeram"}
+  },
+  "require": {
+    "rmccue/requests": ">=1.0",
+    "monolog/monolog": "^1.17",
+    "symfony/yaml": "^3.0",
+    "doctrine/orm": "^2.5",
+    "doctrine/migrations": "^1.2",
+    "symfony/console": "^2.8",
+    "symfony/css-selector": "^3.0",
+    "symfony/dom-crawler": "^3.0",
+    "botman/botman": "^1.5"
+  }
+}

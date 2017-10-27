@@ -1,0 +1,50 @@
+app:
+   base_url:
+   debug: false
+   name: bots
+   bot_drivers:
+     - TelegramDriver
+
+database:
+    host: localhost
+    username: root
+    name: development
+    password: password
+
+bots:
+    Dictionary:
+      telegram_token:
+      api_key:
+      api_url: http://www.dictionaryapi.com/api/v1/references/collegiate/xml
+
+    Frink:
+      telegram_token:
+      api_url: https://www.frinkiac.com/api/search
+      image_url: https://www.frinkiac.com/img
+
+    FuckIt:
+      telegram_token:
+      google_cse_cx_id:
+      google_cse_token:
+      google_cse_url: https://www.googleapis.com/customsearch/v1
+
+    Karma:
+      telegram_token:
+
+    Morbo:
+      telegram_token:
+      api_url: https://morbotron.com/api/search
+      image_url: https://morbotron.com/img
+
+    RandoWiki:
+        telegram_token:
+        telegram_chat_id:
+        pageviews_url: https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access
+
+    Test:
+      telegram_token:
+
+    Weather:
+      telegram_token:
+      ec_sites_url: http://dd.weatheroffice.ec.gc.ca/citypage_weather/xml/siteList.xml
+      ec_city_url: http://dd.weatheroffice.ec.gc.ca/citypage_weather/xml
