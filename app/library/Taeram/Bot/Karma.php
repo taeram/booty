@@ -78,12 +78,12 @@ class Karma extends \Taeram\Bot {
    */
   public function initialize() {
     // Show the leaderboard for users and things
-    $this->bot->hears('/karma top', function(\Mpociot\BotMan\BotMan $bot) {
+    $this->bot->hears('/karma top', function(\BotMan\BotMan\BotMan $bot) {
       // Make it look like the bot is typing
       $bot->types();
 
       $messages = $bot->getMessages();
-      $chatId = $messages[0]->getChannel();
+      $chatId = $messages[0]->getRecipient();
 
       $topUsers = static::getTopResults(static::TYPE_USER, $chatId);
       $topThings = static::getTopResults(static::TYPE_THING, $chatId);
@@ -109,10 +109,8 @@ class Karma extends \Taeram\Bot {
     // Match karma increase / decreases
     $karmaRegex = $this->regex;
     $entity = $this;
-    $this->bot->hears('(.+)', function(\Mpociot\BotMan\BotMan $bot, $text) use ($karmaRegex, $entity) {
+    $this->bot->hears('(.+)', function(\BotMan\BotMan\BotMan $bot, $text) use ($karmaRegex, $entity) {
       if (preg_match_all($karmaRegex, $text, $matches, PREG_SET_ORDER)) {
-        global $log;
-
         $messages = $bot->getMessages();
         $chatId = $messages[0]->getChannel();
 

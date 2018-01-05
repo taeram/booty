@@ -42,7 +42,7 @@ class Weather extends \Taeram\Bot {
   public function initialize() {
     $baseApiUrl = $this->config['ec_city_url'];
 
-    $this->bot->hears('/weather (.+)', function(\Mpociot\BotMan\BotMan $bot, $city) use ($baseApiUrl) {
+    $this->bot->hears('/weather (.+)', function(\BotMan\BotMan\BotMan $bot, $city) use ($baseApiUrl) {
       // Make it look like the bot is typing
       $bot->types();
 

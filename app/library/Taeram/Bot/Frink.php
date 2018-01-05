@@ -13,7 +13,7 @@ class Frink extends \Taeram\Bot {
     $baseApiUrl = $this->config['api_url'];
     $baseImageUrl = $this->config['image_url'];
 
-    $this->bot->hears('/frink (.+)', function(\Mpociot\BotMan\BotMan $bot, $query) use ($baseApiUrl, $baseImageUrl) {
+    $this->bot->hears('/frink (.+)', function(\BotMan\BotMan\BotMan $bot, $query) use ($baseApiUrl, $baseImageUrl) {
       // Make it look like the bot is typing
       $bot->types();
 

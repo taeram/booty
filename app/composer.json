@@ -11,6 +11,7 @@
     "symfony/console": "^2.8",
     "symfony/css-selector": "^3.0",
     "symfony/dom-crawler": "^3.0",
-    "botman/botman": "^1.5"
+    "botman/botman": "^2",
+    "botman/driver-telegram": "^1.1"
   }
 }

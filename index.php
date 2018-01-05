@@ -4,9 +4,11 @@ require_once __DIR__ . '/app/bootstrap.php';
 
 if (defined('STDIN')) {
   $botName = $argv[1];
-} else if (isset($_GET['bot'])) {
+}
+elseif (isset($_GET['bot'])) {
   $botName = $_GET['bot'];
-} else {
+}
+else {
   header("HTTP/1.0 404 Not Found");
   echo "<h1>404 Not Found</h1>";
   die();
@@ -19,9 +21,9 @@ if (!isset($config['bots'][$botName])) {
 
 $botClass = "\\Taeram\\Bot\\$botName";
 $botClass::factory([
-      'telegram_token' => $config['bots'][$botName]['telegram_token']
-    ],
-    $config['bots'][$botName]
-  )
-  ->initialize()
-  ->listen();
+   'telegram' => [
+     'token' => $config['bots'][$botName]['telegram_token'],
+   ],
+ ], $config['bots'][$botName])
+->initialize()
+->listen();

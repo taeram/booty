@@ -7,7 +7,7 @@ abstract class Bot extends \Taeram\Entity {
   /**
    * The bot
    *
-   * @var \Mpociot\BotMan\BotMan
+   * @var \BotMan\BotMan\BotMan
    */
   protected $bot;
 
@@ -36,7 +36,7 @@ abstract class Bot extends \Taeram\Entity {
    */
   public static function factory($botmanConfig, $botConfig) {
     // create an instance
-    $bot = \Mpociot\BotMan\BotManFactory::create($botmanConfig);
+    $bot = \BotMan\BotMan\BotManFactory::create($botmanConfig);
 
     return new static($bot, $botConfig);
   }
@@ -44,9 +44,9 @@ abstract class Bot extends \Taeram\Entity {
   /**
    * Create the bot
    *
-   * @param \Mpociot\BotMan\BotMan $bot
+   * @param \BotMan\BotMan\BotMan $bot
    */
-  public function __construct(\Mpociot\BotMan\BotMan $bot, $config) {
+  public function __construct(\BotMan\BotMan\BotMan $bot, $config) {
     $this->bot = $bot;
     $this->config = $config;
   }
@@ -58,7 +58,7 @@ abstract class Bot extends \Taeram\Entity {
   /**
    * Get the bot
    *
-   * @return \Mpociot\BotMan\BotMan
+   * @return \BotMan\BotMan\BotMan
    */
   public function getBot() {
     return $this->bot;
@@ -88,7 +88,7 @@ abstract class Bot extends \Taeram\Entity {
    * Listen for incoming messages
    */
   public function listen() {
-    return $this->bot->listen();
+    $this->bot->listen();
   }
 
   /**
@@ -96,7 +96,9 @@ abstract class Bot extends \Taeram\Entity {
    */
 
   /**
-   * Run a cron job
+   * Run a cron job.
+   *
+   * To be overridden in child classes.
    *
    * @return self
    */

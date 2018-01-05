@@ -10,10 +10,8 @@ class Test extends \Taeram\Bot {
    * @return self
    */
   public function initialize() {
-    $this->bot->hears('hello', function(\Mpociot\BotMan\BotMan $bot) {
-      // Make it look like the bot is typing
+    $this->bot->hears('hello', function(\BotMan\BotMan\BotMan $bot) {
       $bot->types();
-
       $bot->reply('Hello yourself.');
     });
 

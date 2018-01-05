@@ -59,6 +59,6 @@ $entityManager = \Doctrine\ORM\EntityManager::create([
 
 // Bootstrap the Bot drivers
 foreach ($config['app']['bot_drivers'] as $botDriver) {
- $botDriverClass = "Mpociot\\BotMan\\Drivers\\$botDriver";
- \Mpociot\BotMan\DriverManager::loadDriver($botDriverClass);
+  $botDriverClass = "BotMan\\Drivers\\Telegram\\$botDriver";
+  \BotMan\BotMan\Drivers\DriverManager::loadDriver($botDriverClass);
 }
