@@ -90,8 +90,11 @@ class RandoWiki extends \Taeram\Bot {
       $chatIds = [$chatIds];
     }
 
-    foreach ($chatIds as $chatId) {
-      $this->bot->say($message, $chatId, null, ['parse_mode' => 'HTML']);
+    $drivers = $this->getDrivers();
+    foreach ($drivers as $driverName) {
+      foreach ($chatIds as $chatId) {
+        $this->bot->say($message, $chatId, "BotMan\\Drivers\\Telegram\\$driverName", ['parse_mode' => 'HTML']);
+      }
     }
 
     return $this;
