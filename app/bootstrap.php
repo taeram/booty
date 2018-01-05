@@ -62,3 +62,21 @@ foreach ($config['app']['bot_drivers'] as $botDriver) {
   $botDriverClass = "BotMan\\Drivers\\Telegram\\$botDriver";
   \BotMan\BotMan\Drivers\DriverManager::loadDriver($botDriverClass);
 }
+
+/**
+ * Instantiate a bot
+ *
+ * @param string $botName The bot name
+ * @param array $config The app config
+ *
+ * @return \Taeram\Bot\$botName
+ */
+function instantiate_bot($botName, $config) {
+  $botClass = "\\Taeram\\Bot\\$botName";
+  return $botClass::factory([
+                 'telegram' => [
+                   'token' => $config['bots'][$botName]['telegram_token'],
+                 ],
+               ], $config['bots'][$botName])
+     ->initialize();
+}

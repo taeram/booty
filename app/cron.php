@@ -13,12 +13,6 @@ $cronType = $argv[1];
 require_once __DIR__ . '/bootstrap.php';
 
 foreach ($config['bots'] as $botName => $botConfig) {
-  $botClass = "\\Taeram\\Bot\\$botName";
-  $botClass::factory([
-       'telegram_token' => $config['bots'][$botName]['telegram_token']
-      ],
-      $config['bots'][$botName]
-    )
-    ->initialize()
+  instantiate_bot($botName, $config)
     ->cron($cronType);
 }

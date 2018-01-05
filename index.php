@@ -19,11 +19,5 @@ if (!isset($config['bots'][$botName])) {
   exit(1);
 }
 
-$botClass = "\\Taeram\\Bot\\$botName";
-$botClass::factory([
-   'telegram' => [
-     'token' => $config['bots'][$botName]['telegram_token'],
-   ],
- ], $config['bots'][$botName])
-->initialize()
-->listen();
+instantiate_bot($botName, $config)
+  ->listen();
