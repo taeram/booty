@@ -19,6 +19,13 @@ abstract class Bot extends \Taeram\Entity {
   protected $config;
 
   /**
+   * The bot drivers
+   *
+   * @var array
+   */
+  protected $drivers;
+
+  /**
    * Cron constants
    */
   const CRON_ALWAYS = 'always';
@@ -71,6 +78,27 @@ abstract class Bot extends \Taeram\Entity {
    */
   public function getConfig() {
     return $this->config;
+  }
+
+  /**
+   * Get the drivers
+   *
+   * @return array
+   */
+  public function getDrivers() {
+    return $this->drivers;
+  }
+
+  /**
+   * Set the drivers
+   *
+   * @param array $drivers The drivers
+   *
+   * @return self
+   */
+  public function setDrivers(array $drivers) {
+    $this->drivers = $drivers;
+    return $this;
   }
 
   /**

@@ -78,5 +78,6 @@ function instantiate_bot($botName, $config) {
                    'token' => $config['bots'][$botName]['telegram_token'],
                  ],
                ], $config['bots'][$botName])
+     ->setDrivers($config['app']['bot_drivers'])
      ->initialize();
 }
