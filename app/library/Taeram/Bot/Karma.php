@@ -112,7 +112,7 @@ class Karma extends \Taeram\Bot {
     $this->bot->hears('(.+)', function(\BotMan\BotMan\BotMan $bot, $text) use ($karmaRegex, $entity) {
       if (preg_match_all($karmaRegex, $text, $matches, PREG_SET_ORDER)) {
         $messages = $bot->getMessages();
-        $chatId = $messages[0]->getChannel();
+        $chatId = $messages[0]->getRecipient();
 
         // Make it look like the bot is typing
         $bot->types();
