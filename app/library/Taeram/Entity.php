@@ -3,10 +3,10 @@
 namespace Taeram;
 
 /**
- * Base Entity Class
+ * Base Entity Class.
  */
-abstract class Entity {
-
+abstract class Entity
+{
     /**
      * The entity name.
      *
@@ -17,65 +17,71 @@ abstract class Entity {
     protected static $className;
 
     /**
-     * The entity manager
+     * The entity manager.
      *
      * @var \Doctrine\ORM\EntityManager
      */
     protected static $em;
 
     /**
-     * Get the entity manager
+     * Get the entity manager.
      *
      * @return \Doctrine\ORM\EntityManager
      */
-    public static function getEntityManager() {
+    public static function getEntityManager()
+    {
         return static::$em;
     }
 
     /**
-     * Set the entity manager
+     * Set the entity manager.
      *
      * @param \Doctrine\ORM\EntityManager $em The entity manager
      */
-    public static function setEntityManager(\Doctrine\ORM\EntityManager $em) {
+    public static function setEntityManager(\Doctrine\ORM\EntityManager $em)
+    {
         static::$em = $em;
     }
 
     /**
-     * Return the repository for this entity
+     * Return the repository for this entity.
      *
      * @return \Doctrine\ORM\EntityRepository
      */
-    public static function getRepository() {
+    public static function getRepository()
+    {
         return self::$em->getRepository(static::$className);
     }
 
     /**
-     * Return the entity by id
+     * Return the entity by id.
      *
-     * @param integer $id The entity id
+     * @param int $id The entity id
      *
      * @return self
      */
-    public static function findById($id) {
-        return self::getRepository()->findOneBy(array(
-            'id' => $id
-        ));
+    public static function findById($id)
+    {
+        return self::getRepository()->findOneBy([
+            'id' => $id,
+        ]);
     }
 
     /**
-     * Return all entities
+     * Return all entities.
      *
      * @return self
      */
-    public static function findAll() {
+    public static function findAll()
+    {
         return self::getRepository()->findAll();
     }
 
     /**
-     * Delete the entity
+     * Delete the entity.
      */
-     public function delete() {
+    public function delete()
+    {
         self::$em->remove($this);
         self::$em->flush();
 
@@ -83,11 +89,12 @@ abstract class Entity {
     }
 
     /**
-     * Save the entity
+     * Save the entity.
      *
-     * @return boolean
+     * @return bool
      */
-    public function save() {
+    public function save()
+    {
         self::$em->persist($this);
         self::$em->flush();
 
