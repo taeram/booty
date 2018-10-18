@@ -3,13 +3,17 @@ app:
    debug: false
    name: bots
    bot_drivers:
-     - TelegramDriver
+     - Slack\\SlackDriver
+     - Telegram\\TelegramDriver
 
 database:
     host: localhost
     username: root
     name: development
     password: password
+
+slack:
+  token:
 
 bots:
     Dictionary:
@@ -37,9 +41,9 @@ bots:
       image_url: https://morbotron.com/img
 
     RandoWiki:
-        telegram_token:
-        telegram_chat_id:
-        pageviews_url: https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access
+      telegram_token:
+      telegram_chat_id:
+      pageviews_url: https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia.org/all-access
 
     Test:
       telegram_token:
